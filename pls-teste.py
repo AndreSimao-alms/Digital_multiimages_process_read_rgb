@@ -20,10 +20,7 @@ import pandas as pd
 
 
 # # Leitura de nomes das imagens
-# ---
 # Atente-se pelo nome da pasta que contém as imagens no diretório de usa IDE.
-
-# In[105]:
 
 
 def __read_names(pasta):
@@ -38,12 +35,7 @@ def __read_names(pasta):
     
     return jpgs
 
-
 # # Processamento de imagens (RGB)
-# ---
-
-# In[95]:
-
 
 def __read_rgb(jpgs=jpgs):
     """
@@ -59,12 +51,7 @@ def __read_rgb(jpgs=jpgs):
         b.append(image.imread(jpg)[0][0][2])
     return r,g,b
 
-
 # # Dataframe e armazenamento de planilha com resultados
-# ---
-
-# In[108]:
-
 
 def __create_df_rgb(r = __read_rgb()[0], g = __read_rgb()[1], b = __read_rgb()[2]):
     """
@@ -74,22 +61,16 @@ def __create_df_rgb(r = __read_rgb()[0], g = __read_rgb()[1], b = __read_rgb()[2
 
 
 # # Função show_results
-# ---
-# Este notebook contem a função **show_results()** que será responsável por ler uma pasta contendo imagens, assim retornando um dataframe com três colunas com os valores de RGB de cada arquivo.
-# 
+# Este notebook contem a função **show_results()** que será responsável por ler uma pasta contendo imagens, 
+# assim retornando um dataframe com três colunas com os valores de RGB de cada arquivo.
 # Apenas chame esta função inserindo um único parâmetro, que é uma string com o nome da pasta. Como apresentado abaixo:
-
-# In[109]:
 
 
 def show_results(pasta):
     jpgs = __read_names(pasta)
     __read_rgb()
+    __create_df_rgb().to_excel('results_rgb.xlsx')
     return __create_df_rgb()
-
-
-# In[111]:
-
 
 #show_results('teste')
 
